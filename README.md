@@ -1,4 +1,7 @@
-<h1 align="center"> GhostShell </h1>
+<div align="center">
+  <h1 align="center"> GhostShell </h1>
+  <p align="center"> In this malware, are used some techniques to try bypass the AVs, VMs, and Sandboxes, with only porpuse to learning more. I'm not responsible for your actions. </p>
+</div>
 
 <p align="center"> 
   <img alt="license" src="https://img.shields.io/github/license/ReddyyZ/GhostShell"/>
@@ -13,4 +16,3 @@
   <img alt="watchers" src="https://img.shields.io/github/watchers/ReddyyZ/GhostShell?style=social"/>
 </p>
 
-Malware indetectable, with AV bypass techniques, anti-disassembly, etc.
