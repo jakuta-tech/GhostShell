@@ -8,6 +8,7 @@
     <img alt="last-commit" src="https://img.shields.io/github/last-commit/ReddyyZ/GhostShell"/>
     <img alt="made-by" src="https://img.shields.io/badge/made%20by-ReddyyZ-red"/>
     <img alt="size" src="https://img.shields.io/github/repo-size/ReddyyZ/GhostShell"/>
+    <img alt="binary-size" src="https://img.shields.io/badge/binary%20size-46%2C8%20KB-yellow"/>
   </p>
   <p align="center">
     <img alt="followers" src="https://img.shields.io/github/followers/ReddyyZ?style=social"/>
