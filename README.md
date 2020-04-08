@@ -11,10 +11,10 @@
     <img alt="binary-size" src="https://img.shields.io/badge/binary%20size-46%2C8%20KB-blue"/>
   </p>
   <p align="center">
-    <img alt="followers" src="https://img.shields.io/github/followers/ReddyyZ?style=social"/>
-    <img alt="stars" src="https://img.shields.io/github/stars/ReddyyZ/GhostShell?style=social"/>
-    <img alt="forks" src="https://img.shields.io/github/forks/ReddyyZ/GhostShell?style=social"/>
-    <img alt="watchers" src="https://img.shields.io/github/watchers/ReddyyZ/GhostShell?style=social"/>
+    <a href="https://github.com/ReddyyZ"> <img alt="followers" src="https://img.shields.io/github/followers/ReddyyZ?style=social"/> </a>
+    <a href="https://github.com/ReddyyZ/GhostShell/stargazers"><img alt="stars" src="https://img.shields.io/github/stars/ReddyyZ/GhostShell?style=social"/></a>
+    <a href="https://github.com/ReddyyZ/GhostShell/network/members"><img alt="forks" src="https://img.shields.io/github/forks/ReddyyZ/GhostShell?style=social"/> </a>
+    <a href="https://github.com/ReddyyZ/GhostShell/watchers"><img alt="watchers" src="https://img.shields.io/github/watchers/ReddyyZ/GhostShell?style=social"/> </a>
   </p>
   
 </div>
