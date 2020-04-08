@@ -6,6 +6,8 @@
 #include <time.h>
 
 #define key "ReddyyZ"
+#define AUTHOR "ReddyyZ"
+#define GITHUB_LINK "https://github.com/ReddyyZ/MyMalware"
 
 #define PROCESS_BLACKLIST_MAX 22
 #define PROCESS_NAME_MAX 24
