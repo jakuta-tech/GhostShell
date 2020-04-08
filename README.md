@@ -1,3 +1,5 @@
+<styles> <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> </styles>
+
 <div align="center">
   <h1 align="center"> GhostShell </h1>
   <p align="center"> In this malware, are used some techniques to try bypass the AVs, VMs, and Sandboxes, with only porpuse to learning more. I'm not responsible for your actions. </p>
@@ -16,5 +18,7 @@
     <a href="https://github.com/ReddyyZ/GhostShell/network/members"><img alt="forks" src="https://img.shields.io/github/forks/ReddyyZ/GhostShell?style=social"/> </a>
     <a href="https://github.com/ReddyyZ/GhostShell/watchers"><img alt="watchers" src="https://img.shields.io/github/watchers/ReddyyZ/GhostShell?style=social"/> </a>
   </p>
+  
+  <i class="fal fa-shield-virus"></i>
   
 </div>
