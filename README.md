@@ -19,6 +19,6 @@
     <a href="https://github.com/ReddyyZ/GhostShell/watchers"><img alt="watchers" src="https://img.shields.io/github/watchers/ReddyyZ/GhostShell?style=social"/> </a>
   </p>
   
-  <i class="fal fa-shield-virus"></i>
+  <i class="fas fa-shield-virus"></i>
   
 </div>
