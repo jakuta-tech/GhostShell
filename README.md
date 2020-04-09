@@ -57,6 +57,17 @@ On linux type: ``` ./encrypt_shellcode e "(KEY, ex: "\xda\xe6\x1d\x5c\x9v\x8d") 
 On windows type: ``` encrypt_shellcode.exe e "(KEY, ex: "\xda\xe6\x1d\x5c\x9v\x8d") "(shellcode)"" ```
 
 
+
 - ## :computer: How to compile for Windows on Linux
 
 To compile for Windows on Linux, first, install mingw-w64: ``` sudo apt-get install mingw-w64 ```, then, to compile for 32 bits: ``` i686-w64-mingw32-gcc -o main.exe main.c -l psapi -static ```, and to 64 bits: ``` x86_64-w64-mingw32 -o main.exe main.c -l psapi -static ```
+
+-  ## :book: Credits
+
+Credits for https://github.com/rastating, the encrypt_shellcode is based on a post of your github.io: https://rastating.github.io/creating-a-shellcode-crypter/
+
+
+
+- ## :memo: License
+
+This project is under MIT license. See at here [LICENSE](/LICENSE.md) for more informations.
