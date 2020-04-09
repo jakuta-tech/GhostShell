@@ -22,7 +22,7 @@
 <p align="center">
   <a href="#bomb-bypass-techniques"> Bypass Techniques </a> |
   <a href="#radioactive-generating-the-shellcode"> Generating the Shellcode </a> |
-  <a href="#bomb-bypass-techniques"> Bypass Techniques </a>
+  <a href="#:computer:-how-to-compile-for-windows-on-linux"> How to compile for Windows on Linux </a>
 </p>
 
 
