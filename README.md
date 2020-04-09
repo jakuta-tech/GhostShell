@@ -47,5 +47,5 @@ To try bypass the Debuggers, I'm using the "IsDebuggerPresent()" of "Windows.h" 
   Gets the system mac address and compare to the macs, in the black-list, if the system mac address is equal to any mac in the black-list returns -1 (identified).
 
 
-- ## ☢ Generating the Shellcode
+- ## :radioactive: Generating the Shellcode
 ![Generating](/assets/generating%20shellcode.gif)
