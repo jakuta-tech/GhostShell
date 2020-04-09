@@ -45,3 +45,6 @@ To try bypass the Debuggers, I'm using the "IsDebuggerPresent()" of "Windows.h" 
 - **Mac Address Check Function**
 
   Gets the system mac address and compare to the macs, in the black-list, if the system mac address is equal to any mac in the black-list returns -1 (identified).
+
+
+- ## ☢ Generating the Shellcode
