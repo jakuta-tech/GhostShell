@@ -36,12 +36,12 @@ To try bypass the Debuggers, I'm using the "IsDebuggerPresent()" of "Windows.h" 
 
 - **Enumerate Process Function**
 
-   Enumerates all process running on the system, and compares to the process in the black-list, if found a process and this is equal to any process in the black-list returns -1 (identified).
+ Enumerates all process running on the system, and compares to the process in the black-list, if found a process and this is equal to any process in the black-list returns -1 (identified).
 
 - **Sleep Acceleration Check Function**
 
-First, gets the current time, and sleeps 2 minutes, then, gets the time again, and compare, if the difference is less than 2, returns -1 (identified).
+ First, gets the current time, and sleeps 2 minutes, then, gets the time again, and compare, if the difference is less than 2, returns -1 (identified).
 
 - **Mac Address Check Function**
 
-Gets the system mac address and compare to the macs, in the black-list, if the system mac address is equal to any mac in the black-list returns -1 (identified).
+ Gets the system mac address and compare to the macs, in the black-list, if the system mac address is equal to any mac in the black-list returns -1 (identified).
