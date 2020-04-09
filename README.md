@@ -21,7 +21,7 @@
 
 <p align="center">
   <a href="#bomb-bypass-techniques"> Bypass Techniques </a> |
-  <a href="#generating-the-shellcode"> Generating the Shellcode </a> |
+  <a href="#☢-generating-the-shellcode"> Generating the Shellcode </a> |
   <a href="#bomb-bypass-techniques"> Bypass Techniques </a>
 </p>
 
