@@ -48,4 +48,4 @@ To try bypass the Debuggers, I'm using the "IsDebuggerPresent()" of "Windows.h" 
 
 
 - ## ☢ Generating the Shellcode
-<iframe src="https://giphy.com/embed/YMkkNxxEpFMWfIW3gz" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/YMkkNxxEpFMWfIW3gz">via GIPHY</a></p>
+[!Generating](https://giphy.com/embed/YMkkNxxEpFMWfIW3gz)
