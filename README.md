@@ -48,4 +48,4 @@ To try bypass the Debuggers, I'm using the "IsDebuggerPresent()" of "Windows.h" 
 
 
 - ## ☢ Generating the Shellcode
-[!Generating](https://giphy.com/embed/YMkkNxxEpFMWfIW3gz)
+![Generating](https://giphy.com/embed/YMkkNxxEpFMWfIW3gz)
