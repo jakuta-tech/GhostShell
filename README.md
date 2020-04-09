@@ -19,7 +19,11 @@
   
 </div>
 
-- ## :bomb: Bypass Techniques
 <p align="center">
+  <a href="#bomb-bypass-techniques"> Bypass Techniques </a> |
+  <a href="#bomb-bypass-techniques"> Bypass Techniques </a> |
   <a href="#bomb-bypass-techniques"> Bypass Techniques </a>
 </p>
+
+
+- ## :bomb: Bypass Techniques
