@@ -22,8 +22,8 @@
 <p align="center">
   <a href="#bomb-bypass-techniques"> Bypass Techniques </a> |
   <a href="#radioactive-generating-the-shellcode"> Generating the Shellcode </a> |
-  <a href="#computer-how-to-compile-for-windows-on-linux"> How to compile for Windows on Linux </a>
-  <a href="#book-credits"> Credits </a>
+  <a href="#computer-how-to-compile-for-windows-on-linux"> How to compile for Windows on Linux </a> |
+  <a href="#book-credits"> Credits </a> |
   <a href="#memo-license"> License </a>
 </p>
 
