@@ -29,7 +29,7 @@
 
 
 - ## :warning: Atention!!!
-**To check if the antivirus is detecting the malware, never send it to the virus, it will be sent to the antivirus companies and will be broken, to analyze, send it to https://www.hybrid-analysis.com/ and remember to check the option "Do not send my sample to non-affiliated third parties", as in the example below.**
+**To check if the antivirus is detecting the malware, NEVER send it to the virustotal, IT WILL BE SENT TO THE ANTIVIRUS COMPANIES AND WILL BE BROKEN, to analyze, send it to https://www.hybrid-analysis.com/ and remember to check the option "Do not send my sample to non-affiliated third parties", as in the example below.**
 
 
 
