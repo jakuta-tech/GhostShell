@@ -34,7 +34,7 @@
 
 To try bypass the Debuggers, I'm using the "IsDebuggerPresent()" of "Windows.h" librarie to checks if a debugger is running.
 
-### **Anti-VM / Anti-Sandbox**
+### **Anti-VM / Anti-Sandbox / Anti-AV**
 
 - **Enumerate Process Function**
 
