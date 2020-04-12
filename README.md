@@ -9,8 +9,6 @@
     <img alt="made-by" src="https://img.shields.io/badge/made%20by-ReddyyZ-red"/>
     <img alt="size" src="https://img.shields.io/github/repo-size/ReddyyZ/GhostShell"/>
     <img alt="binary-size" src="https://img.shields.io/badge/binary%20size-46%2C8%20KB-blue"/>
-    <img alt="issues" src="https://img.shields.io/github/issues/ReddyyZ/GhostShell"/>
-    <img alt="issues" src="https://img.shields.io/github/issues-closed/ReddyyZ/GhostShell"/>
   </p>
   
   
@@ -21,6 +19,10 @@
     <a href="https://github.com/ReddyyZ/GhostShell/watchers"><img alt="watchers" src="https://img.shields.io/github/watchers/ReddyyZ/GhostShell?style=social"/> </a>
   </p>
   
+  <p align="center">
+    <img alt="issues" src="https://img.shields.io/github/issues/ReddyyZ/GhostShell"/>
+    <img alt="issues" src="https://img.shields.io/github/issues-closed/ReddyyZ/GhostShell"/>
+  </p>
 </div>
 
 <p align="center">
