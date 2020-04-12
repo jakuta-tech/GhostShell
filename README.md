@@ -9,6 +9,8 @@
     <img alt="made-by" src="https://img.shields.io/badge/made%20by-ReddyyZ-red"/>
     <img alt="size" src="https://img.shields.io/github/repo-size/ReddyyZ/GhostShell"/>
     <img alt="binary-size" src="https://img.shields.io/badge/binary%20size-46%2C8%20KB-blue"/>
+    <img alt="issues" src="https://img.shields.io/github/issues/ReddyyZ/GhostShell?color=green"/>
+    <img alt="issues-closed" src="https://img.shields.io/github/issues-closed/ReddyyZ/GhostShell?color=red"/>
   </p>
   
   
