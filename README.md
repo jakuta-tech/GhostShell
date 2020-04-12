@@ -20,8 +20,8 @@
   </p>
   
   <p align="center">
-    <img alt="issues" src="https://img.shields.io/github/issues/ReddyyZ/GhostShell"/>
-    <img alt="issues" src="https://img.shields.io/github/issues-closed/ReddyyZ/GhostShell"/>
+    <img alt="issues" src="https://img.shields.io/github/issues/ReddyyZ/GhostShell?color=green"/>
+    <img alt="issues-closed" src="https://img.shields.io/github/issues-closed/ReddyyZ/GhostShell?color=red"/>
   </p>
 </div>
 
